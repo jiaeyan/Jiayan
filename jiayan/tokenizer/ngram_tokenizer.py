@@ -7,7 +7,6 @@ from jiayan.globals import re_zh_include
 """
 References:
 [https://github.com/fxsjy/jieba]
-[https://blog.csdn.net/daniel_ustc/article/details/48223135]
 """
 
 dir_path = os.path.dirname(os.path.realpath(__file__))

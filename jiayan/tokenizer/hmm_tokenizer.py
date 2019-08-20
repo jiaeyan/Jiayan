@@ -73,9 +73,6 @@ Disadvantages:
 (c) fake word frequency: since word corpus is built by tokenizing, which can lead to inaccurate sentence splits, the
           word count doesn't reflect true frequency, e.g., "天下" in "于天下". So we use its true frequency count in 
           the ngrams dict when filtering.
-
-References:
-[https://spaces.ac.cn/archives/3956]
 """
 
 

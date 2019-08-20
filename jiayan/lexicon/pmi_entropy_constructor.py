@@ -8,10 +8,6 @@ A precise way to discover new words in sentence corpus, consider PMI and entropy
 
 1. PMI is used to evaluate how tight the two segments of the word;
 2. Right and left entropy are used to evaluate how independent the word is in various contexts.
-
-References:
-[http://www.matrix67.com/blog/archives/5044]
-[https://zhuanlan.zhihu.com/p/25499358]
 """
 
 
