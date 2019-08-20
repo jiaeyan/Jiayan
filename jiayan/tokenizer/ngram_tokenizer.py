@@ -141,39 +141,3 @@ class WordNgramTokenizer:
             # appears at least once, like add-1 laplace smoothing
             route[i] = max((log(self.PREFIX.get(sentence[i:end + 1]) or 1) - log_total
                             + route[end + 1][0], end) for end in DAG[i])
-
-
-if __name__ == '__main__':
-    print(dir_path)
-    print(root)
-    print(dict_path)
-    print(cache_path)
-    # s = '日月出矣而爝火不息'
-    # t = WordNgramTokenizer('dict.txt')
-    # dag = t.get_DAG(s)
-    #
-    # # 打印s的前缀字典
-    # print(u'\"%s\"的前缀字典:' % s)
-    # for pos in range(len(s)):
-    #     print(s[:pos+1], t.gen_word_freq(s[:pos+1]))
-    #
-    # print(u'\"%s\"的DAG:' % s)
-    # for d in dag:
-    #     print(d, ':', dag[d])
-    # route = {}
-    # t.calc(s, dag, route)
-    # print('route:')
-    # print(route)
-
-    # print(list(t.tokenize('朝菌不知晦朔')))
-    # print(list(t.tokenize('日月出矣而爝火不息')))
-    # print(list(t.tokenize('背负青天而莫之夭阏者')))
-    # print(list(t.tokenize('抟扶摇羊角而上者九万里')))
-    # print(list(t.tokenize('翱翔蓬蒿之间')))
-    # print(list(t.tokenize('天下从事者不可以无法仪')))
-    # print(list(t.tokenize('天下之为父母者众')))
-    # print(list(t.tokenize('何以知尚贤之为政本也')))
-    # print(list(t.tokenize('以为锦绣文采靡曼之衣')))
-    # print(list(t.tokenize('天下大乱，贤圣不明，道德不一，天下多得一察焉以自好，譬如耳目，皆有所明，不能相通，犹百家众技也，皆有所长，时有所用，虽然不该不遍一之士也，判天地之美，析万物之理，察古人之全寡，能备于天地之美，称神之容，是故内圣外王之道，暗而不明，郁而不发，天下之人各为其所欲焉，以自为方，悲夫，百家往而不反，必不合矣，后世之学者不幸不见天地之纯，古之大体，道术将为天下裂')))
-    # print(list(t.tokenize('有，足游浮云，背凌苍天，尾偃天间，跃啄北海，颈尾咳于天地乎，然而漻漻不知六翮之所在。')))
-

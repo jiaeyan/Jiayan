@@ -12,12 +12,6 @@ class CRFSentencizer(CRFSentTagger):
         super(CRFSentencizer, self).__init__(lm)
         self.char_pos_dict = get_char_pos_dict()
 
-    # def get_char_poss(self, char):
-    #     if char in self.char_pos_dict:
-    #         # return ''.join(sorted(self.char_pos_dict[char]))
-    #         return self.char_pos_dict[char][0]
-    #     return 'UNK'
-
     def sent2features(self, sent: str, tags=None):
         length = len(sent)
         feat_list = []
@@ -25,7 +19,6 @@ class CRFSentencizer(CRFSentTagger):
             features = [
                 'bias',
                 '0:char=' + char,
-                # '0:poss=' + self.get_char_poss(char)
             ]
 
             if i > 0:
@@ -33,8 +26,6 @@ class CRFSentencizer(CRFSentTagger):
                     '-1:char=' + sent[i - 1],
                     '-10:chars=' + sent[i - 1: i + 1],
                     '-10:pmi=' + self.get_pmi(sent[i - 1: i + 1]),
-
-                    # '-1:poss=' + self.get_char_poss(sent[i - 1]),
                 ])
             else:
                 features.append('BOS')
@@ -51,8 +42,6 @@ class CRFSentencizer(CRFSentTagger):
                     '+1:char=' + sent[i + 1],
                     '+01:chars=' + sent[i: i + 2],
                     '+01:pmi=' + self.get_pmi(sent[i: i + 2]),
-
-                    # '+1:poss=' + self.get_char_poss(sent[i + 1]),
                 ])
             else:
                 features.append('EOS')
