@@ -1,0 +1,2 @@
+kenlm
+python-crfsuite
