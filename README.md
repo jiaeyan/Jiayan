@@ -1,4 +1,4 @@
-# Jiayan
+# 甲言Jiayan
 中文  
 English  
 
@@ -7,10 +7,10 @@ English
 目前流通的汉语NLP工具均以现代汉语为核心语料，对古代汉语的处理效果不佳。本项目的初衷，便是辅助古汉语信息处理，帮助有志于挖掘古文化矿藏的古汉语学者、爱好者等更好地分析和利用文言资料，从「文化遗产」中创造出「文化新产」。  
 当前版本支持词库构建、自动分词、文言句读和标点四项功能，更多功能正在开发中。  
 
-Jiayan, which means Chinese characters on the oracle bones, is an NLP toolkit designed for Classical Chinese.  
+Jiayan, which means Chinese characters engraved on the oracle bones, is an NLP toolkit designed for Classical Chinese.  
 
 ## 安装  
-
+PyPI发布构建中。  
 ## 功能  
 * __词库构建__  
   * 利用无监督的双字典树、点互信息以及左右邻接熵进行文言词库自动构建。
@@ -29,10 +29,10 @@ Jiayan, which means Chinese characters on the oracle bones, is an NLP toolkit de
 * _文白翻译_
   * 开发中，目前处于文白平行语料收集、清洗阶段。
   * 基于双向长短时记忆循环网络和注意力机制的神经网络生成模型，对古文进行自动翻译。
-
+* 注意：受语料影响，目前不支持繁体。如需处理繁体，可先用[OpenCC](https://github.com/yichen0831/opencc-python)将输入转换为简体，再将结果转化为相应繁体(如港澳台等)。  
 ## 使用  
 以下各模块的使用方法均来自[examples.py](jiayan/examples.py)。
-1. 下载模型并解压：百度网盘，提取码：
+1. 下载模型并解压：百度网盘(_模型上传中_)，提取码：
 2. __词库构建__  
    ```
    from jiayan import PMIEntropyLexiconConstructor
