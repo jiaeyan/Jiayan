@@ -64,7 +64,7 @@ def train_punctuator(lm_path, data_file, cut_model, out_model):
 
 
 if __name__ == '__main__':
-    test_f = '天下大乱贤圣不明道德不一天下多得一察焉以自好譬如耳目口鼻皆有所明不能相通犹百家众技也皆有所长时有所用虽然不该不遍一之士也判天地之美析万物之理察古人之全寡能备于天地之美称神之容是故内圣外王之道暗而不明郁而不发天下之人各为其所欲焉以自为方悲夫百家往而不反必不合矣后世之学者不幸不见天地之纯古之大体道术将为天下裂'
+    test_f = '天下大乱贤圣不明道德不一天下多得一察焉以自好譬如耳目皆有所明不能相通犹百家众技也皆有所长时有所用虽然不该不遍一之士也判天地之美析万物之理察古人之全寡能备于天地之美称神之容是故内圣外王之道暗而不明郁而不发天下之人各为其所欲焉以自为方悲夫百家往而不反必不合矣后世之学者不幸不见天地之纯古之大体道术将为天下裂'
     test_f1 = '圣人之治民也先治者强先战者胜夫国事务先而一民心专举公而私不从赏告而奸不生明法而治不烦能用四者强不能用四者弱夫国之所以强者政也主之所以尊者权也故明君有权有政乱君亦有权有政积而不同其所以立异也故明君操权而上重一政而国治故法者王之本也刑者爱之自也'
     test_f2 = '公曰善吾不食谄人以言也以鱼五十乘赐弦章章归鱼车塞途抚其御之手曰昔者晏子辞党当作赏以正君故过失不掩之今诸臣谀以干利吾若受鱼是反晏子之义而顺谄谀之欲固辞鱼不受君子曰弦章之廉晏子之遗行也'
     test_f3 = '景公游于菑闻晏子死公乘侈舆服繁驵驱之而因为迟下车而趋知不若车之速则又乘比至于国者四下而趋行哭而往伏尸而号'
@@ -113,19 +113,19 @@ if __name__ == '__main__':
     lm = load_lm('data/jiayan.klm')
 
     # sentcizer = CRFSentencizer(lm)
-    # sentcizer.load('/Users/jiaeyan/Desktop/cut_model/cut_char_pmi_ttest_rlu_all_65_s.crfsuite')
+    # sentcizer.load("/Users/jiaeyan/Desktop/cut_model")
     # for test in tests:
     #     print(sentcizer.sentencize(test))
 
 
-    # punctuator = CRFPunctuator(lm, '/Users/jiaeyan/Desktop/cut_model/cut_char_pmi_ttest_rlu_all_65_s.crfsuite')
-    # punctuator.load('/Users/jiaeyan/Desktop/punc_model/punc_sent_65_s.crfsuite')
-    # for test in tests:
-    #     print(punctuator.punctuate(test))
-
-    tokenizer = CharHMMTokenizer(lm)
+    punctuator = CRFPunctuator(lm, '/Users/jiaeyan/Desktop/cut_model')
+    punctuator.load('/Users/jiaeyan/Desktop/punc_model')
     for test in tests:
-        print(list(tokenizer.tokenize(test)))
+        print(punctuator.punctuate(test))
+
+    # tokenizer = CharHMMTokenizer(lm)
+    # for test in tests:
+    #     print(list(tokenizer.tokenize(test)))
 
 
 

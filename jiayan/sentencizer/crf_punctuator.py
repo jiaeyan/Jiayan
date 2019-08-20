@@ -5,7 +5,6 @@ from sklearn.metrics import classification_report
 from sklearn.preprocessing import LabelBinarizer
 
 from jiayan.globals import re_puncs_include, re_zh_exclude
-from jiayan.globals import get_char_pos_dict
 from jiayan.utils import text_iterator
 from jiayan.sentencizer.crf_sent_tagger import CRFSentTagger
 from jiayan.sentencizer.crf_sentencizer import CRFSentencizer
@@ -17,13 +16,6 @@ class CRFPunctuator(CRFSentTagger):
         super(CRFPunctuator, self).__init__(lm)
         self.sentencizer = CRFSentencizer(lm)
         self.sentencizer.load(cut_model)
-        self.char_pos_dict = get_char_pos_dict()
-
-    def get_char_poss(self, char):
-        if char in self.char_pos_dict:
-            # return ''.join(sorted(self.char_pos_dict[char]))
-            return self.char_pos_dict[char][0]
-        return 'UNK'
 
     def sent2features(self, sent: str, tags=None):
         length = len(sent)
@@ -33,8 +25,6 @@ class CRFPunctuator(CRFSentTagger):
                 'bias',
                 '0:char=' + char,
                 '0:tag=' + tags[i],
-
-                # '0:poss=' + self.get_char_poss(char)
             ]
 
             if i > 0:
@@ -45,8 +35,6 @@ class CRFPunctuator(CRFSentTagger):
 
                     # '-1:tag=' + tags[i - 1],
                     # '-10:tags=' + tags[i - 1: i + 1],
-
-                    # '-1:poss=' + self.get_char_poss(sent[i - 1]),
                 ])
             else:
                 features.append('BOS')
@@ -76,8 +64,6 @@ class CRFPunctuator(CRFSentTagger):
 
                     # '+1:tag=' + tags[i + 1],
                     # '+01:tags=' + tags[i: i + 2],
-
-                    # '+1:poss=' + self.get_char_poss(sent[i + 1]),
                 ])
             else:
                 features.append('EOS')

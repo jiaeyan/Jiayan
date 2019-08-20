@@ -23,12 +23,78 @@ Jiayan, which means Chinese characters on the oracle bones, is an NLP toolkit de
     2. 现代汉语词性标注不适用于古汉语词；
     3. 无法直接使用无监督方法进行标注；
 * 断句
-  * 基于字符的层叠式条件随机场的序列标注，对文言段落进行自动断句。
+  * 基于字符的层叠式条件随机场的序列标注，引入点互信息及t-测试值为特征，对文言段落进行自动断句。
 * 标点
   * 基于字符的层叠式条件随机场的序列标注，在断句的基础上对文言段落进行自动标点。
 * 文白翻译
-  * 开发中，目前处于文白平行语料收集、整理阶段。
+  * 开发中，目前处于文白平行语料收集、清洗阶段。
   * 基于双向长短时记忆循环网络和注意力机制的神经网络生成模型，对古文进行自动翻译。
 
 ## 使用  
+以下各模块的使用方法均来自examples.py。
+1. 下载模型并解压：百度网盘，提取码：
+2. 词库构建  
+   ```
+   from jiayan import PMIEntropyLexiconConstructor
+   
+   constructor = PMIEntropyLexiconConstructor()
+   lexicon = constructor.construct_lexicon('庄子.txt')
+   constructor.save(lexicon, '庄子词库.csv')
+   ```
+3. 分词  
+    1. 字符级隐马尔可夫模型分词，效果符合语感，建议使用，需加载语言模型 `jiayan.klm`
+        ```
+        from jiayan import load_lm
+        from jiayan import CharHMMTokenizer
+        
+        text = '是故内圣外王之道，暗而不明，郁而不发，天下之人各为其所欲焉以自为方。'
+        
+        lm = load_lm('jiayan.klm')
+        tokenizer = CharHMMTokenizer(lm)
+        print(list(tokenizer.tokenize(text)))
+        
+        # ['是', '故', '内圣外王', '之', '道', '，', '暗', '而', '不', '明', '，', '郁', '而', '不', '发', '，', '天下', '之', '人', '各', '为', '其', '所', '欲', '焉', '以', '自', '为', '方', '。']
+        
+        # 试比较 [LTP](https://github.com/HIT-SCIR/ltp) (3.4.0) 模型分词结果：
+        # ['是', '故内', '圣外王', '之', '道', '，', '暗而不明', '，', '郁', '而', '不', '发', '，', '天下', '之', '人', '各', '为', '其', '所', '欲', '焉以自为方', '。']
+        ```
+    2. 词级最大概率路径分词，基本以字为单位，颗粒度较粗
+        ```
+        from jiayan import WordNgramTokenizer
+        
+        text = '是故内圣外王之道，暗而不明，郁而不发，天下之人各为其所欲焉以自为方。'
+        tokenizer = WordNgramTokenizer()
+        print(list(tokenizer.tokenize(text)))
+        
+        # ['是', '故', '内', '圣', '外', '王', '之', '道', '，', '暗', '而', '不', '明', '，', '郁', '而', '不', '发', '，', '天下', '之', '人', '各', '为', '其', '所', '欲', '焉', '以', '自', '为', '方', '。']
+        ```
+4. 断句
+    ```
+    from jiayan import load_lm
+    from jiayan import CRFSentencizer
+    
+    text = '天下大乱贤圣不明道德不一天下多得一察焉以自好譬如耳目皆有所明不能相通犹百家众技也皆有所长时有所用虽然不该不遍一之士也判天地之美析万物之理察古人之全寡能备于天地之美称神之容是故内圣外王之道暗而不明郁而不发天下之人各为其所欲焉以自为方悲夫百家往而不反必不合矣后世之学者不幸不见天地之纯古之大体道术将为天下裂'
+    
+    lm = load_lm('jiayan.klm')
+    sentencizer = CRFSentencizer(lm)
+    sentencizer.load('cut_model')
+    print(sentencizer.sentencize(text))
+    
+    # ['天下大乱', '贤圣不明', '道德不一', '天下多得一察焉以自好', '譬如耳目', '皆有所明', '不能相通', '犹百家众技也', '皆有所长', '时有所用', '虽然', '不该不遍', '一之士也', '判天地之美', '析万物之理', '察古人之全', '寡能备于天地之美', '称神之容', '是故内圣外王之道', '暗而不明', '郁而不发', '天下之人各为其所欲焉以自为方', '悲夫', '百家往而不反', '必不合矣', '后世之学者', '不幸不见天地之纯', '古之大体', '道术将为天下裂']
+    ```
+5. 标点
+    ```
+    from jiayan import load_lm
+    from jiayan import CRFPunctuator
+    
+    text = '天下大乱贤圣不明道德不一天下多得一察焉以自好譬如耳目皆有所明不能相通犹百家众技也皆有所长时有所用虽然不该不遍一之士也判天地之美析万物之理察古人之全寡能备于天地之美称神之容是故内圣外王之道暗而不明郁而不发天下之人各为其所欲焉以自为方悲夫百家往而不反必不合矣后世之学者不幸不见天地之纯古之大体道术将为天下裂'
+    
+    lm = load_lm('jiayan.klm')
+    punctuator = CRFPunctuator(lm, 'cut_model')
+    punctuator.load('punc_model')
+    print(punctuator.punctuate(text))
+    
+    # 天下大乱，贤圣不明，道德不一，天下多得一察焉以自好，譬如耳目，皆有所明，不能相通，犹百家众技也，皆有所长，时有所用，虽然，不该不遍，一之士也，判天地之美，析万物之理，察古人之全，寡能备于天地之美，称神之容，是故内圣外王之道，暗而不明，郁而不发，天下之人各为其所欲焉以自为方，悲夫！百家往而不反，必不合矣，后世之学者，不幸不见天地之纯，古之大体，道术将为天下裂。
+    ```
+## 版本
 

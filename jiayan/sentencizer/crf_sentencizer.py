@@ -1,7 +1,6 @@
 from itertools import chain
 
 from jiayan.globals import re_puncs_exclude
-from jiayan.globals import get_char_pos_dict
 from jiayan.utils import text_iterator
 from jiayan.sentencizer.crf_sent_tagger import CRFSentTagger
 
@@ -10,7 +9,6 @@ class CRFSentencizer(CRFSentTagger):
 
     def __init__(self, lm):
         super(CRFSentencizer, self).__init__(lm)
-        self.char_pos_dict = get_char_pos_dict()
 
     def sent2features(self, sent: str, tags=None):
         length = len(sent)

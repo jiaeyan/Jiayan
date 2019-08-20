@@ -34,7 +34,7 @@ class WordNgramTokenizer:
         else:
             # if no cache, generate freq dict and dump the cache
             PREFIX, total = self.gen_prefix_dict(dict_f)
-            with open(self.cache, 'wb', encoding='utf-8') as temp_cache_file:
+            with open(self.cache, 'wb') as temp_cache_file:
                 marshal.dump((PREFIX, total), temp_cache_file)
             return PREFIX, total
 
