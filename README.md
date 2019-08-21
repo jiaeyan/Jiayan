@@ -1,5 +1,7 @@
 # 甲言Jiayan
-中文  
+[![PyPI](https://img.shields.io/badge/pypi-v0.0.1-blue.svg)](https://pypi.org/project/jiayan/)
+
+[中文](#简介)  
 English  
 
 ## 简介
@@ -10,12 +12,12 @@ English
 Jiayan, which means Chinese characters engraved on the oracle bones, is an NLP toolkit designed for Classical Chinese.  
 
 ## 安装  
-`pip install jiayan`  
+    $ pip install jiayan 
   
 ## 功能  
-* [词库构建](#__词库构建__)  
+* [__词库构建__](#1)  
   * 利用无监督的双[字典树](https://baike.baidu.com/item/Trie树)、[点互信息](https://www.jianshu.com/p/79de56cbb2c7)以及左右邻接[熵](https://baike.baidu.com/item/信息熵/7302318?fr=aladdin)进行文言词库自动构建。
-* [分词](#__分词__)  
+* [__分词__](#2)  
   * 利用无监督、无词典的[N元语法](https://baike.baidu.com/item/n元语法)和[隐马尔可夫模型](https://baike.baidu.com/item/隐马尔可夫模型)进行古汉语自动分词。
   * 利用词库构建功能产生的文言词典，基于有向无环词图、句子最大概率路径和动态规划算法进行分词。
 * 词性标注  
@@ -23,9 +25,9 @@ Jiayan, which means Chinese characters engraved on the oracle bones, is an NLP t
     1. 没有公开的古汉语词性标注语料；
     2. 现代汉语词性标注不适用于古汉语词；
     3. 难以直接使用无监督方法进行标注；
-* [断句](#__断句__)
+* [__断句__](#3)
   * 基于字符的层叠式[条件随机场](https://baike.baidu.com/item/条件随机场)的序列标注，引入点互信息及[t-测试值](https://baike.baidu.com/item/t检验/9910799?fr=aladdin)为特征，对文言段落进行自动断句。
-* [标点](#__标点__)
+* [__标点__](#4)
   * 基于字符的层叠式条件随机场的序列标注，在断句的基础上对文言段落进行自动标点。
 * 文白翻译
   * 开发中，目前处于文白平行语料收集、清洗阶段。
@@ -40,7 +42,7 @@ Jiayan, which means Chinese characters engraved on the oracle bones, is an NLP t
    * punc_model：CRF标点模型；
    * 庄子.txt：用来测试词库构建的庄子全文。
    
-2. __词库构建__  
+2. <span id="1">__词库构建__</span>  
    ```
    from jiayan import PMIEntropyLexiconConstructor
    
@@ -66,7 +68,7 @@ Jiayan, which means Chinese characters engraved on the oracle bones, is an NLP t
    老聃,45,2281.2228260869565,2.384853500510039,2.4331958387289765
    ...
    ```
-3. __分词__  
+3. <span id="2">__分词__</span>  
     1. 字符级隐马尔可夫模型分词，效果符合语感，建议使用，需加载语言模型 `jiayan.klm`
         ```
         from jiayan import load_lm
@@ -101,7 +103,7 @@ Jiayan, which means Chinese characters engraved on the oracle bones, is an NLP t
         ```
         结果：  
         `['是', '故', '内', '圣', '外', '王', '之', '道', '，', '暗', '而', '不', '明', '，', '郁', '而', '不', '发', '，', '天下', '之', '人', '各', '为', '其', '所', '欲', '焉', '以', '自', '为', '方', '。']`  
-4. __断句__
+4. <span id="3">__断句__</span>
     ```
     from jiayan import load_lm
     from jiayan import CRFSentencizer
@@ -116,7 +118,7 @@ Jiayan, which means Chinese characters engraved on the oracle bones, is an NLP t
     结果：  
     `['天下大乱', '贤圣不明', '道德不一', '天下多得一察焉以自好', '譬如耳目', '皆有所明', '不能相通', '犹百家众技也', '皆有所长', '时有所用', '虽然', '不该不遍', '一之士也', '判天地之美', '析万物之理', '察古人之全', '寡能备于天地之美', '称神之容', '是故内圣外王之道', '暗而不明', '郁而不发', '天下之人各为其所欲焉以自为方', '悲夫', '百家往而不反', '必不合矣', '后世之学者', '不幸不见天地之纯', '古之大体', '道术将为天下裂']`  
 
-5. __标点__
+5. <span id="4">__标点__</span>
     ```
     from jiayan import load_lm
     from jiayan import CRFPunctuator
@@ -133,4 +135,5 @@ Jiayan, which means Chinese characters engraved on the oracle bones, is an NLP t
 
 
 ## 版本
-
+* v0.0.1
+  * 词库构建、自动分词、文言句读、标点功能开放。
