@@ -1,0 +1,2 @@
+include jiayan/data/dict.txt
+include jiayan/data/char_pos_dict.json
