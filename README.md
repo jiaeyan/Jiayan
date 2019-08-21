@@ -36,7 +36,7 @@ Jiayan, which means Chinese characters engraved on the oracle bones, is an NLP t
 
 ## 使用  
 以下各模块的使用方法均来自[examples.py](jiayan/examples.py)。
-1. 下载模型并解压：[百度网盘](https://pan.baidu.com/s/1N815EO8aEBl-S8Rd-rwXwA)，提取码：12gu
+1. 下载模型并解压：[百度网盘](https://pan.baidu.com/s/1N815EO8aEBl-S8Rd-rwXwA)，提取码：`12gu`
    * jiayan.klm：语言模型，主要用来分词，以及句读标点任务中的特征提取；  
    * cut_model：CRF句读模型；
    * punc_model：CRF标点模型；
