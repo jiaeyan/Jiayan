@@ -2,15 +2,12 @@
 [![PyPI](https://img.shields.io/badge/pypi-v0.0.1-blue.svg)](https://pypi.org/project/jiayan/)
 
 [中文](#简介)  
-English  
+[English](#introduction)  
 
 ## 简介
 甲言，取「甲骨文言」之意，是一款专注于古汉语处理的NLP工具包。  
 目前通用的汉语NLP工具均以现代汉语为核心语料，对古代汉语的处理效果很差(详见[分词](#2))。本项目的初衷，便是辅助古汉语信息处理，帮助有志于挖掘古文化矿藏的古汉语学者、爱好者等更好地分析和利用文言资料，从「文化遗产」中创造出「文化新产」。  
 当前版本支持词库构建、自动分词、文言句读和标点（目前仍有大量古籍未做句读）四项功能，更多功能正在开发中。  
-
-## 安装  
-    $ pip install jiayan 
   
 ## 功能  
 * [__词库构建__](#1)  
@@ -24,13 +21,16 @@ English
     2. 现代汉语词性标注不适用于古汉语词；
     3. 难以直接使用无监督方法进行标注；
 * [__断句__](#3)
-  * 基于字符的层叠式[条件随机场](https://baike.baidu.com/item/条件随机场)的序列标注，引入点互信息及[t-测试值](https://baike.baidu.com/item/t检验/9910799?fr=aladdin)为特征，对文言段落进行自动断句。
+  * 基于字符的[条件随机场](https://baike.baidu.com/item/条件随机场)的序列标注，引入点互信息及[t-测试值](https://baike.baidu.com/item/t检验/9910799?fr=aladdin)为特征，对文言段落进行自动断句。
 * [__标点__](#4)
   * 基于字符的层叠式条件随机场的序列标注，在断句的基础上对文言段落进行自动标点。
 * 文白翻译
   * 开发中，目前处于文白平行语料收集、清洗阶段。
   * 基于[双向长短时记忆循环网络](https://baike.baidu.com/item/长短期记忆人工神经网络/17541107?fromtitle=LSTM&fromid=17541102&fr=aladdin)和[注意力机制](https://baike.baidu.com/item/注意力机制)的神经网络生成模型，对古文进行自动翻译。
 * 注意：受语料影响，目前不支持繁体。如需处理繁体，可先用[OpenCC](https://github.com/yichen0831/opencc-python)将输入转换为简体，再将结果转化为相应繁体(如港澳台等)。  
+
+## 安装  
+    $ pip install jiayan 
 
 ## 使用  
 以下各模块的使用方法均来自[examples.py](jiayan/examples.py)。
@@ -136,42 +136,44 @@ English
 * v0.0.1
   * 词库构建、自动分词、文言句读、标点功能开放。
   
+  
+---
 
 ## Introduction
 Jiayan, which means Chinese characters engraved on oracle bones, is a professional Python NLP tool for Classical Chinese.  
-Prevailing Chinese NLP tools are mainly trained on modern Chinese data, which leads to bad performance on Classical Chinese. The purpose of this project is to assist Classical Chinese information processing.  
+Prevailing Chinese NLP tools are mainly trained on modern Chinese data, which leads to bad performance on Classical Chinese (See [__Tokenizing__](#6)). The purpose of this project is to assist Classical Chinese information processing.  
 Current version supports lexicon construction, tokenizing, sentence segmentation and automatic punctuation, more features are in development.  
-
-## Installation  
-    $ pip install jiayan 
   
 ## Features  
-* [__Lexicon Construction__](#1)  
-  * With an unsupervised approach, construct lexicon with Tri-tree, point-wise mutual information and neighboring entropy of left and right characters.  
-* [__Tokenizing__](#2)  
-  * With an unsupervised, no dictionary approach to tokenize a Classical Chinese sentence with 4-gram language model and HMM.  
-  * With the dictionary produced from lexicon construction, tokenize a Classical Chinese sentence with Directed Acyclic Word Graph, Max Probability Path and Dynamic Programming.  
-* [__Sentence Segmentation__](#3)
-  * Sequence tagging with CRF, introduces PMI and T-test values as features.  
-* [__Punctuation__](#4)
+* [__Lexicon Construction__](#5)  
+  * With an unsupervised approach, construct lexicon with [Tri](https://en.wikipedia.org/wiki/Trie) -tree, [PMI](https://en.wikipedia.org/wiki/Pointwise_mutual_information) (point-wise mutual information) and neighboring [entropy](https://en.wikipedia.org/wiki/Entropy_(information_theory) of left and right characters.  
+* [__Tokenizing__](#6)  
+  * With an unsupervised, no dictionary approach to tokenize a Classical Chinese sentence with [N-gram](https://en.wikipedia.org/wiki/N-gram) language model and [HMM](https://en.wikipedia.org/wiki/Hidden_Markov_model) (Hidden Markov Model).  
+  * With the dictionary produced from lexicon construction, tokenize a Classical Chinese sentence with Directed Acyclic Word Graph, Max Probability Path and [Dynamic Programming](https://en.wikipedia.org/wiki/Dynamic_programming).  
+* [__Sentence Segmentation__](#7)
+  * Sequence tagging with [CRF](https://en.wikipedia.org/wiki/Conditional_random_field) (Conditional Random Field), introduces PMI and [T-test](https://en.wikipedia.org/wiki/Student%27s_t-test) values as features.  
+* [__Punctuation__](#8)
   * Sequence tagging with layered CRFs, punctuate given Classical Chinese texts based on results of sentence segmentation.    
 * Note: Due to data we used, we don't support traditional Chinese for now. If you have to process traditional one, please use [OpenCC](https://github.com/yichen0831/opencc-python) to convert traditional input to simplified, then you could convert the results back.  
 
+## Installation  
+    $ pip install jiayan 
+
 ## Usages  
 The usage codes below are all from [examples.py](jiayan/examples.py).  
-1. Download models and unzip them：[百度网盘](https://pan.baidu.com/s/1N815EO8aEBl-S8Rd-rwXwA)，提取码：`12gu`
+1. Download the models and unzip them：[Google Drive](https://drive.google.com/open?id=1RlMnCkMMyvDoCjHDCG8vA0jH3To_zQxU)
    * jiayan.klm：the language model used for tokenizing and feature extraction for sentence segmentation and punctuation;    
    * cut_model：the CRF model for sentence segmentation;
    * punc_model：the CRF model for punctuation;  
-   * 庄子.txt：the full text of <Zhuangzi> used for testing lexicon construction.  
+   * 庄子.txt：the full text of 《Zhuangzi》 used for testing lexicon construction.  
    
-2. <span id="1">__Lexicon Construction__</span>  
+2. <span id="5">__Lexicon Construction__</span>  
    ```
    from jiayan import PMIEntropyLexiconConstructor
    
    constructor = PMIEntropyLexiconConstructor()
    lexicon = constructor.construct_lexicon('庄子.txt')
-   constructor.save(lexicon, '庄子词库.csv')
+   constructor.save(lexicon, 'Zhuangzi_Lexicon.csv')
    ```
    
    Result：  
@@ -191,7 +193,7 @@ The usage codes below are all from [examples.py](jiayan/examples.py).
    老聃,45,2281.2228260869565,2.384853500510039,2.4331958387289765
    ...
    ```
-3. <span id="2">__Tokenizing__</span>  
+3. <span id="6">__Tokenizing__</span>  
     1. The character based HMM, recommended, needs language model: `jiayan.klm`
         ```
         from jiayan import load_lm
@@ -203,7 +205,6 @@ The usage codes below are all from [examples.py](jiayan/examples.py).
         tokenizer = CharHMMTokenizer(lm)
         print(list(tokenizer.tokenize(text)))
         ```
-        
         Result：  
         `['是', '故', '内圣外王', '之', '道', '，', '暗', '而', '不', '明', '，', '郁', '而', '不', '发', '，', '天下', '之', '人', '各', '为', '其', '所', '欲', '焉', '以', '自', '为', '方', '。']`  
         
@@ -217,7 +218,7 @@ The usage codes below are all from [examples.py](jiayan/examples.py).
         
         It's apparent that Jiayan has much better tokenizing performance than general Chinese NLP tools.  
         
-    2. 词级最大概率路径分词，基本以字为单位，颗粒度较粗
+    2. Max probability path approach tokenizing based on words
         ```
         from jiayan import WordNgramTokenizer
         
@@ -225,9 +226,9 @@ The usage codes below are all from [examples.py](jiayan/examples.py).
         tokenizer = WordNgramTokenizer()
         print(list(tokenizer.tokenize(text)))
         ```
-        结果：  
+        Result:
         `['是', '故', '内', '圣', '外', '王', '之', '道', '，', '暗', '而', '不', '明', '，', '郁', '而', '不', '发', '，', '天下', '之', '人', '各', '为', '其', '所', '欲', '焉', '以', '自', '为', '方', '。']`  
-4. <span id="3">__断句__</span>
+4. <span id="7">__Sentence Segmentation__</span>
     ```
     from jiayan import load_lm
     from jiayan import CRFSentencizer
@@ -239,10 +240,10 @@ The usage codes below are all from [examples.py](jiayan/examples.py).
     sentencizer.load('cut_model')
     print(sentencizer.sentencize(text))
     ```
-    结果：  
+    Result:  
     `['天下大乱', '贤圣不明', '道德不一', '天下多得一察焉以自好', '譬如耳目', '皆有所明', '不能相通', '犹百家众技也', '皆有所长', '时有所用', '虽然', '不该不遍', '一之士也', '判天地之美', '析万物之理', '察古人之全', '寡能备于天地之美', '称神之容', '是故内圣外王之道', '暗而不明', '郁而不发', '天下之人各为其所欲焉以自为方', '悲夫', '百家往而不反', '必不合矣', '后世之学者', '不幸不见天地之纯', '古之大体', '道术将为天下裂']`  
 
-5. <span id="4">__标点__</span>
+5. <span id="8">__Punctuation__</span>
     ```
     from jiayan import load_lm
     from jiayan import CRFPunctuator
@@ -254,10 +255,10 @@ The usage codes below are all from [examples.py](jiayan/examples.py).
     punctuator.load('punc_model')
     print(punctuator.punctuate(text))
     ```
-    结果：  
+    Result:  
     `天下大乱，贤圣不明，道德不一，天下多得一察焉以自好，譬如耳目，皆有所明，不能相通，犹百家众技也，皆有所长，时有所用，虽然，不该不遍，一之士也，判天地之美，析万物之理，察古人之全，寡能备于天地之美，称神之容，是故内圣外王之道，暗而不明，郁而不发，天下之人各为其所欲焉以自为方，悲夫！百家往而不反，必不合矣，后世之学者，不幸不见天地之纯，古之大体，道术将为天下裂。`
 
 
-## 版本
+## Versions
 * v0.0.1
-  * 词库构建、自动分词、文言句读、标点功能开放。
+  * Add features of lexicon construction, tokenizing, sentence segmentation and automatic punctuation.
