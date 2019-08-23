@@ -146,12 +146,12 @@ Current version supports lexicon construction, tokenizing, sentence segmentation
   
 ## Features  
 * [__Lexicon Construction__](#5)  
-  * With an unsupervised approach, construct lexicon with [Tri](https://en.wikipedia.org/wiki/Trie) -tree, [PMI](https://en.wikipedia.org/wiki/Pointwise_mutual_information) (point-wise mutual information) and neighboring [entropy](https://en.wikipedia.org/wiki/Entropy_\(information_theory\)) of left and right characters.  
+  * With an unsupervised approach, construct lexicon with [Tri](https://en.wikipedia.org/wiki/Trie) -tree, [PMI](https://en.wikipedia.org/wiki/Pointwise_mutual_information) (_point-wise mutual information_) and neighboring [entropy](https://en.wikipedia.org/wiki/Entropy_\(information_theory\)) of left and right characters.  
 * [__Tokenizing__](#6)  
-  * With an unsupervised, no dictionary approach to tokenize a Classical Chinese sentence with [N-gram](https://en.wikipedia.org/wiki/N-gram) language model and [HMM](https://en.wikipedia.org/wiki/Hidden_Markov_model) (Hidden Markov Model).  
+  * With an unsupervised, no dictionary approach to tokenize a Classical Chinese sentence with [N-gram](https://en.wikipedia.org/wiki/N-gram) language model and [HMM](https://en.wikipedia.org/wiki/Hidden_Markov_model) (_Hidden Markov Model_).  
   * With the dictionary produced from lexicon construction, tokenize a Classical Chinese sentence with Directed Acyclic Word Graph, Max Probability Path and [Dynamic Programming](https://en.wikipedia.org/wiki/Dynamic_programming).  
 * [__Sentence Segmentation__](#7)
-  * Sequence tagging with [CRF](https://en.wikipedia.org/wiki/Conditional_random_field) (Conditional Random Field), introduces PMI and [T-test](https://en.wikipedia.org/wiki/Student%27s_t-test) values as features.  
+  * Sequence tagging with [CRF](https://en.wikipedia.org/wiki/Conditional_random_field) (_Conditional Random Field_), introduces PMI and [T-test](https://en.wikipedia.org/wiki/Student%27s_t-test) values as features.  
 * [__Punctuation__](#8)
   * Sequence tagging with layered CRFs, punctuate given Classical Chinese texts based on results of sentence segmentation.    
 * Note: Due to data we used, we don't support traditional Chinese for now. If you have to process traditional one, please use [OpenCC](https://github.com/yichen0831/opencc-python) to convert traditional input to simplified, then you could convert the results back.  
