@@ -3,6 +3,7 @@ from jiayan import CharHMMTokenizer
 from jiayan import WordNgramTokenizer
 from jiayan import CRFSentencizer
 from jiayan import CRFPunctuator
+from jiayan import CRFPOSTagger
 from jiayan import load_lm
 
 
@@ -63,6 +64,18 @@ def train_punctuator(lm_path, data_file, cut_model, out_model):
     punctuator.eval(test_x, test_y, out_model)
 
 
+def train_postagger(lm_path, data_file, pos_model):
+    lm = load_lm(lm_path)
+    postagger = CRFPOSTagger(lm)
+    print('Building data...')
+    X, Y = postagger.build_data(data_file)
+    train_x, train_y, test_x, test_y = postagger.split_data(X, Y)
+    X[:] = []
+    Y[:] = []
+    print('Training...')
+    postagger.train(train_x, train_y, pos_model)
+    postagger.eval(test_x, test_y, pos_model)
+
 if __name__ == '__main__':
     test_f = '天下大乱贤圣不明道德不一天下多得一察焉以自好譬如耳目皆有所明不能相通犹百家众技也皆有所长时有所用虽然不该不遍一之士也判天地之美析万物之理察古人之全寡能备于天地之美称神之容是故内圣外王之道暗而不明郁而不发天下之人各为其所欲焉以自为方悲夫百家往而不反必不合矣后世之学者不幸不见天地之纯古之大体道术将为天下裂'
     test_f1 = '圣人之治民也先治者强先战者胜夫国事务先而一民心专举公而私不从赏告而奸不生明法而治不烦能用四者强不能用四者弱夫国之所以强者政也主之所以尊者权也故明君有权有政乱君亦有权有政积而不同其所以立异也故明君操权而上重一政而国治故法者王之本也刑者爱之自也'
@@ -109,8 +122,9 @@ if __name__ == '__main__':
 
     # train_sentencizer('data/jiayan.klm', '/Users/jiaeyan/Desktop/chn_data/all.txt', 'crf_cut_multi')
     # train_punctuator('data/jiayan.klm', '/Users/jiaeyan/Desktop/chn_data/all.txt', 'crf_cut', 'crf_punc_2')
+    train_postagger('data/jiayan.klm', '/Users/jiaeyan/Desktop/chn_data/pos_all.txt', 'pos_model')
 
-    lm = load_lm('data/jiayan.klm')
+    # lm = load_lm('data/jiayan.klm')
 
     # sentcizer = CRFSentencizer(lm)
     # sentcizer.load("/Users/jiaeyan/Desktop/cut_model")
@@ -118,14 +132,15 @@ if __name__ == '__main__':
     #     print(sentcizer.sentencize(test))
 
 
-    punctuator = CRFPunctuator(lm, '/Users/jiaeyan/Desktop/cut_model')
-    punctuator.load('/Users/jiaeyan/Desktop/punc_model')
-    for test in tests:
-        print(punctuator.punctuate(test))
+    # punctuator = CRFPunctuator(lm, '/Users/jiaeyan/Desktop/cut_model')
+    # punctuator.load('/Users/jiaeyan/Desktop/punc_model')
+    # for test in tests:
+    #     print(punctuator.punctuate(test))
 
     # tokenizer = CharHMMTokenizer(lm)
     # for test in tests:
     #     print(list(tokenizer.tokenize(test)))
+
 
 
 

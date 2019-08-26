@@ -7,6 +7,8 @@ re_zh_exclude = re.compile("[\u4E00-\u9FA5]+", re.U)
 re_puncs_include = re.compile(r'([。？！，、：；])')
 re_puncs_exclude = re.compile(r'[。？！，、：；]')
 
+re_whitespace = re.compile(r'\s+')
+
 re_invalid_chars = re.compile(r'[^\u4E00-\u9FA5。？！，、：；]+', re.U)
 
 stopchars = {'之', '兹', '此', '彼',

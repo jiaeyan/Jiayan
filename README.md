@@ -213,7 +213,7 @@ The usage codes below are all from [examples.py](jiayan/examples.py).
         Compare the tokenizing result of [LTP](https://github.com/HIT-SCIR/ltp) (3.4.0):  
         `['是', '故内', '圣外王', '之', '道', '，', '暗而不明', '，', '郁', '而', '不', '发', '，', '天下', '之', '人', '各', '为', '其', '所', '欲', '焉以自为方', '。']`  
         
-        And, compare the tokenizing result of [HanLP](http://hanlp.com):  
+        Also, compare the tokenizing result of [HanLP](http://hanlp.com):  
         `['是故', '内', '圣', '外', '王之道', '，', '暗', '而', '不明', '，', '郁', '而', '不', '发', '，', '天下', '之', '人', '各为其所欲焉', '以', '自为', '方', '。']`  
         
         It's apparent that Jiayan has much better tokenizing performance than general Chinese NLP tools.  

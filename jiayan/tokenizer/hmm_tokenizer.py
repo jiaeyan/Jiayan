@@ -1,6 +1,6 @@
 from math import log10
 
-from jiayan.globals import re_zh_include, stopchars
+from jiayan.globals import re_zh_include, re_whitespace, stopchars
 
 """
 Use HMM to consider word detection as a char sequence tagging problem.
@@ -90,6 +90,10 @@ class CharHMMTokenizer:
                  'cb': 0.9925, 'cd': 0.0075,
                  'db': 0.999, 'de': 0.001,
                  'eb': 0.9999, 'ee': 0.0001}
+        # trans = {'bb': 0.8, 'bc': 0.2,
+        #          'cb': 0.9925, 'cd': 0.0075,
+        #          'db': 0.999, 'de': 0.001,
+        #          'eb': 0.9999, 'ee': 0.0001}
 
         # convert the decimal probabilities to logs to avoid overflow
         self.trans = {states: log10(trans_prob) for states, trans_prob in trans.items()}
@@ -98,33 +102,33 @@ class CharHMMTokenizer:
         """ Gets the tags of given sentence, and tokenizes sentence based on the tag sequence.
         """
         # split chars into char chunks by zh chars
-        for chunk in re_zh_include.split(text):
-            if chunk:
-                # if zh chars, tokenize them
-                if re_zh_include.match(chunk):
-                    tags = self.viterbi(chunk)
-                    
-                    word = chunk[0]
-                    for i in range(1, len(chunk)):
-                        if tags[i] == 'b':
-                            if not self.valid_word(word):
-                                for char in word:
-                                    yield char
-                            else:
-                                yield word
-                            word = chunk[i]
-                        else:
-                            word += chunk[i]
-                    if word:
+        for chunk in re_zh_include.split(re_whitespace.sub('', text)):
+            # if zh chars, tokenize them
+            if re_zh_include.match(chunk):
+                tags = self.viterbi(chunk)
+
+                word = chunk[0]
+                for i in range(1, len(chunk)):
+                    if tags[i] == 'b':
                         if not self.valid_word(word):
                             for char in word:
                                 yield char
                         else:
                             yield word
-    
-                # if not zh chars, treat them as a word and do not tokenize
-                else:
-                    yield chunk
+                        word = chunk[i]
+                    else:
+                        word += chunk[i]
+                if word:
+                    if not self.valid_word(word):
+                        for char in word:
+                            yield char
+                    else:
+                        yield word
+
+            # if not zh chars, we assume they are all punctuations, split them
+            else:
+                for char in chunk:
+                    yield char
 
     def viterbi(self, sent):
         """ Chooses the most likely char tag sequence of given char sentence.

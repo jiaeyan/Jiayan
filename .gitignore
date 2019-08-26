@@ -4,6 +4,9 @@
 test.py
 jiayan.klm
 tokenizer.cache
+cut_model
+punc_model
+pos_model
 
 
 #################

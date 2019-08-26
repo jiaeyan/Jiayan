@@ -1,4 +1,4 @@
-from jiayan.globals import *
+from jiayan.globals import re_invalid_chars, re_zh_exclude
 
 
 def process_line(line: str):
