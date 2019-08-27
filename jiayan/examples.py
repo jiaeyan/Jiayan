@@ -24,6 +24,12 @@ def ngram_tokenize(text: str):
     print(list(tokenizer.tokenize(text)))
 
 
+def crf_pos_tag(pos_model, words):
+    postagger = CRFPOSTagger()
+    postagger.load(pos_model)
+    print(postagger.postag(words))
+
+
 def crf_sentencize(lm_path: str, cut_model, text):
     lm = load_lm(lm_path)
     sentencizer = CRFSentencizer(lm)
@@ -64,9 +70,8 @@ def train_punctuator(lm_path, data_file, cut_model, out_model):
     punctuator.eval(test_x, test_y, out_model)
 
 
-def train_postagger(lm_path, data_file, pos_model):
-    lm = load_lm(lm_path)
-    postagger = CRFPOSTagger(lm)
+def train_postagger(data_file, pos_model):
+    postagger = CRFPOSTagger()
     print('Building data...')
     X, Y = postagger.build_data(data_file)
     train_x, train_y, test_x, test_y = postagger.split_data(X, Y)
@@ -122,7 +127,7 @@ if __name__ == '__main__':
 
     # train_sentencizer('data/jiayan.klm', '/Users/jiaeyan/Desktop/chn_data/all.txt', 'crf_cut_multi')
     # train_punctuator('data/jiayan.klm', '/Users/jiaeyan/Desktop/chn_data/all.txt', 'crf_cut', 'crf_punc_2')
-    train_postagger('data/jiayan.klm', '/Users/jiaeyan/Desktop/chn_data/pos_all.txt', 'pos_model')
+    train_postagger('/Users/jiaeyan/Desktop/chn_data/pos_all.txt', 'pos_model')
 
     # lm = load_lm('data/jiayan.klm')
 
@@ -140,6 +145,13 @@ if __name__ == '__main__':
     # tokenizer = CharHMMTokenizer(lm)
     # for test in tests:
     #     print(list(tokenizer.tokenize(test)))
+
+    # postagger = CRFPOSTagger()
+    # postagger.load('pos_model')
+    # for test in tests:
+    #     words = list(tokenizer.tokenize(test))
+    #     print(words)
+    #     print(postagger.postag(words))
 
 
 

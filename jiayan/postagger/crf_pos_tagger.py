@@ -11,8 +11,7 @@ from jiayan.globals import re_zh_exclude
 
 class CRFPOSTagger:
 
-    def __init__(self, lm):
-        self.lm = lm
+    def __init__(self):
         self.tagger = None
 
     def load(self, crf_model):
