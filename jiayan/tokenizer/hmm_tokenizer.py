@@ -101,34 +101,36 @@ class CharHMMTokenizer:
     def tokenize(self, text: str):
         """ Gets the tags of given sentence, and tokenizes sentence based on the tag sequence.
         """
-        # split chars into char chunks by zh chars
-        for chunk in re_zh_include.split(re_whitespace.sub('', text)):
-            # if zh chars, tokenize them
-            if re_zh_include.match(chunk):
-                tags = self.viterbi(chunk)
+        # split text by whitespaces first, then split each segment into char chunks by zh chars
+        for seg in text.strip().split():
+            if seg:
+                for chunk in re_zh_include.split(seg):
+                    # if zh chars, tokenize them
+                    if re_zh_include.match(chunk):
+                        tags = self.viterbi(chunk)
 
-                word = chunk[0]
-                for i in range(1, len(chunk)):
-                    if tags[i] == 'b':
-                        if not self.valid_word(word):
-                            for char in word:
-                                yield char
-                        else:
-                            yield word
-                        word = chunk[i]
+                        word = chunk[0]
+                        for i in range(1, len(chunk)):
+                            if tags[i] == 'b':
+                                if not self.valid_word(word):
+                                    for char in word:
+                                        yield char
+                                else:
+                                    yield word
+                                word = chunk[i]
+                            else:
+                                word += chunk[i]
+                        if word:
+                            if not self.valid_word(word):
+                                for char in word:
+                                    yield char
+                            else:
+                                yield word
+
+                    # if not zh chars, we assume they are all punctuations, split them
                     else:
-                        word += chunk[i]
-                if word:
-                    if not self.valid_word(word):
-                        for char in word:
+                        for char in chunk:
                             yield char
-                    else:
-                        yield word
-
-            # if not zh chars, we assume they are all punctuations, split them
-            else:
-                for char in chunk:
-                    yield char
 
     def viterbi(self, sent):
         """ Chooses the most likely char tag sequence of given char sentence.

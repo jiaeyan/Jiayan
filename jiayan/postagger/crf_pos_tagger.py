@@ -8,6 +8,7 @@ from sklearn.preprocessing import LabelBinarizer
 
 from jiayan.globals import re_zh_exclude
 
+
 class CRFPOSTagger:
 
     def __init__(self, lm):
@@ -90,12 +91,7 @@ class CRFPOSTagger:
         trainer = pycrfsuite.Trainer(verbose=False)
         for x, y in zip(train_x, train_y):
             if x and y:
-                try:
-                    trainer.append(x, y)
-                except:
-                    print(len(x), x)
-                    print(len(y), y)
-                    print()
+                trainer.append(x, y)
 
         trainer.set_params({
             'c1': 1.0,                            # coefficient for L1 penalty
