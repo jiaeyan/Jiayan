@@ -163,7 +163,7 @@ Current version supports lexicon construction, tokenizing, POS tagging, sentence
   * With an unsupervised, no dictionary approach to tokenize a Classical Chinese sentence with [N-gram](https://en.wikipedia.org/wiki/N-gram) language model and [HMM](https://en.wikipedia.org/wiki/Hidden_Markov_model) (_Hidden Markov Model_).  
   * With the dictionary produced from lexicon construction, tokenize a Classical Chinese sentence with Directed Acyclic Word Graph, Max Probability Path and [Dynamic Programming](https://en.wikipedia.org/wiki/Dynamic_programming).  
 * [__POS Tagging__](#8)  
-  * Word level sequence tagging with [CRF](https://en.wikipedia.org/wiki/Conditional_random_field) (_Conditional Random Field_). See POS tag categories[here](jiayan/postagger/README.md).  
+  * Word level sequence tagging with [CRF](https://en.wikipedia.org/wiki/Conditional_random_field) (_Conditional Random Field_). See POS tag categories [here](jiayan/postagger/README.md).  
 * [__Sentence Segmentation__](#9)
   * Character level sequence tagging with CRF, introduces PMI and [T-test](https://en.wikipedia.org/wiki/Student%27s_t-test) values as features.  
 * [__Punctuation__](#10)
