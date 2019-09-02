@@ -16,7 +16,7 @@
   * 利用无监督、无词典的[N元语法](https://baike.baidu.com/item/n元语法)和[隐马尔可夫模型](https://baike.baidu.com/item/隐马尔可夫模型)进行古汉语自动分词。
   * 利用词库构建功能产生的文言词典，基于有向无环词图、句子最大概率路径和动态规划算法进行分词。
 * [__词性标注__](#3)  
-  * 基于词的[条件随机场](https://baike.baidu.com/item/条件随机场)的序列标注。词性表详见：
+  * 基于词的[条件随机场](https://baike.baidu.com/item/条件随机场)的序列标注，词性详见[词性表](jiayan/postagger/README.md)。
 * [__断句__](#4)
   * 基于字符的条件随机场的序列标注，引入点互信息及[t-测试值](https://baike.baidu.com/item/t检验/9910799?fr=aladdin)为特征，对文言段落进行自动断句。
 * [__标点__](#5)
@@ -163,7 +163,7 @@ Current version supports lexicon construction, tokenizing, POS tagging, sentence
   * With an unsupervised, no dictionary approach to tokenize a Classical Chinese sentence with [N-gram](https://en.wikipedia.org/wiki/N-gram) language model and [HMM](https://en.wikipedia.org/wiki/Hidden_Markov_model) (_Hidden Markov Model_).  
   * With the dictionary produced from lexicon construction, tokenize a Classical Chinese sentence with Directed Acyclic Word Graph, Max Probability Path and [Dynamic Programming](https://en.wikipedia.org/wiki/Dynamic_programming).  
 * [__POS Tagging__](#8)  
-  * Word level sequence tagging with [CRF](https://en.wikipedia.org/wiki/Conditional_random_field) (_Conditional Random Field_).  
+  * Word level sequence tagging with [CRF](https://en.wikipedia.org/wiki/Conditional_random_field) (_Conditional Random Field_). See POS tag categories[here](jiayan/postagger/README.md).  
 * [__Sentence Segmentation__](#9)
   * Character level sequence tagging with CRF, introduces PMI and [T-test](https://en.wikipedia.org/wiki/Student%27s_t-test) values as features.  
 * [__Punctuation__](#10)
