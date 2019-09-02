@@ -16,11 +16,18 @@ def text_iterator(data_file, keep_punc=False):
     """ A help function to provide clean zh char lines of a given file. """
     with open(data_file, 'r', encoding='utf-8') as f:
         for line in f:
-            line = process_line(line)
-            if keep_punc:
-                if line:
-                    yield line
-            else:
-                for text in re_zh_exclude.findall(line):
-                    if text:
-                        yield text
+            for seg in line.strip().split():
+                if seg:
+                    seg = process_line(seg)
+                    if keep_punc:
+                        if seg:
+                            yield seg
+                    else:
+                        for text in re_zh_exclude.findall(seg):
+                            if text:
+                                yield text
+
+
+def make_kenlm(data_file):
+    for text in text_iterator(data_file):
+        print(' '.join(text))

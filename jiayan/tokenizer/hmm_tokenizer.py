@@ -1,6 +1,6 @@
 from math import log10
 
-from jiayan.globals import re_zh_include, re_whitespace, stopchars
+from jiayan.globals import re_zh_include, stopchars
 
 """
 Use HMM to consider word detection as a char sequence tagging problem.

@@ -125,8 +125,8 @@ if __name__ == '__main__':
 
 
 
-    # train_sentencizer('data/jiayan.klm', '/Users/jiaeyan/Desktop/chn_data/all.txt', 'crf_cut_multi')
-    # train_punctuator('data/jiayan.klm', '/Users/jiaeyan/Desktop/chn_data/all.txt', 'crf_cut', 'crf_punc_2')
+    # train_sentencizer('data/jiayan.klm', '/Users/jiaeyan/Desktop/chn_data/all.txt', 'cut_model_60')
+    # train_punctuator('data/jiayan.klm', '/Users/jiaeyan/Desktop/chn_data/all.txt', 'cut_model', 'punc_model')
     train_postagger('/Users/jiaeyan/Desktop/chn_data/pos_all.txt', 'pos_model')
 
     # lm = load_lm('data/jiayan.klm')
@@ -162,7 +162,7 @@ if __name__ == '__main__':
     #        '悲夫百家往而不反必不合矣后世之学者不幸不见天地之纯古之大体道术将为天下裂'
     #
     # lm_path = 'data/jiayan.klm'
-    #
+
     # print('Constructing lexicon...')
     # construct_lexicon('data/庄子.txt', '庄子1.csv')
     #
@@ -174,7 +174,8 @@ if __name__ == '__main__':
     #     ngram_tokenize(test)
     #
     # print('\nSentencizing test text with CRF...')
-    # crf_sentencize(lm_path, 'crf_cut', test)
-    #
+    # crf_sentencize(lm_path, 'cut_model', test_f1)
+
     # print('\nPunctuating test text with CRF...')
-    # crf_punctuate(lm_path, 'crf_cut', 'crf_punc', test)
+    # crf_punctuate(lm_path, 'cut_model_60', 'punc_model', test_f1)
+    # crf_punctuate(lm_path, 'cut_model_60', 'punc_model', test)
