@@ -1,31 +1,31 @@
 Tag | Description | Example
 --- | --- | ---
-a | adjective | 美丽
-b | other noun-modifier | 大型, 西式
-c | conjunction | 和, 虽然
-d | adverb | 很
-e | exclamation | 哎
-g | morpheme | 茨, 甥
-h | prefix | 阿, 伪
-i | idiom | 百花齐放
-j | abbreviation | 公检法
-k | suffix | 界, 率
-m | number | 一, 第一
-n | general noun | 苹果
-nd | direction noun | 右侧
-nh | person name | 杜甫, 汤姆
-ni | organization name | 保险公司
-nl | location noun | 城郊
-ns | geographical name | 北京
-nt | temporal noun | 近日, 明代
-nz | other proper noun | 诺贝尔奖
-o | onomatopoeia | 哗啦
-p | preposition | 在, 把
-q | quantity | 个
-r | pronoun | 我们
-u | auxiliary | 的, 地
-v | verb | 跑, 学习
+a | adjective | 幽明
+b | other noun-modifier | 女
+c | conjunction | 与
+d | adverb | 皆
+e | exclamation | 呜呼
+g | morpheme | 甥
+h | prefix | 非
+i | idiom | 发愤忘食
+j | abbreviation | 五帝
+k | suffix | 者
+m | number | 一，百
+n | general noun | 鬼神，山川
+nd | direction noun | 东，西，南，北
+nh | person name | 轩辕
+ni | organization name | 辽队
+nl | location noun | 城北
+ns | geographical name | 襄平县
+nt | temporal noun | 夏
+nz | other proper noun | 山海经
+o | onomatopoeia | 呜呜
+p | preposition | 以，为
+q | quantity | 岁
+r | pronoun | 其，斯
+u | auxiliary | 之，所
+v | verb | 赐
 wp | punctuation | ，。！
 ws | foreign words | CPU
 x | non-lexeme | 萄, 翱
-z | descriptive words | 瑟瑟，匆匆
+z | descriptive words | 默然，区区

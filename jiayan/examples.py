@@ -129,12 +129,12 @@ if __name__ == '__main__':
     # train_punctuator('data/jiayan.klm', '/Users/jiaeyan/Desktop/chn_data/all.txt', 'cut_model', 'punc_model')
     # train_postagger('/Users/jiaeyan/Desktop/chn_data/pos_all.txt', 'pos_model')
 
-    lm = load_lm('data/jiayan_no_ws.klm')
+    lm = load_lm('data/jiayan.klm')
 
-    # sentcizer = CRFSentencizer(lm)
-    # sentcizer.load("/Users/jiaeyan/Desktop/cut_model")
-    # for test in tests:
-    #     print(sentcizer.sentencize(test))
+    sentcizer = CRFSentencizer(lm)
+    sentcizer.load("/Users/jiaeyan/Desktop/cut_model_70")
+    for test in tests:
+        print(sentcizer.sentencize(test))
 
 
     # punctuator = CRFPunctuator(lm, '/Users/jiaeyan/Desktop/cut_model')
@@ -142,9 +142,9 @@ if __name__ == '__main__':
     # for test in tests:
     #     print(punctuator.punctuate(test))
 
-    tokenizer = CharHMMTokenizer(lm)
-    for test in tests:
-        print(list(tokenizer.tokenize(test)))
+    # tokenizer = CharHMMTokenizer(lm)
+    # for test in tests:
+    #     print(list(tokenizer.tokenize(test)))
 
     # postagger = CRFPOSTagger()
     # postagger.load('pos_model')
