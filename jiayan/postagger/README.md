@@ -1,8 +1,8 @@
 Tag | Description | Example
 --- | --- | ---
 a | adjective | 幽明
-b | other noun-modifier | 女
-c | conjunction | 与
+b | other noun-modifier | 男，女
+c | conjunction | 与，而
 d | adverb | 皆
 e | exclamation | 呜呼
 g | morpheme | 甥
@@ -17,11 +17,11 @@ nh | person name | 轩辕
 ni | organization name | 辽队
 nl | location noun | 城北
 ns | geographical name | 襄平县
-nt | temporal noun | 夏
+nt | temporal noun | 春，夏，秋，冬
 nz | other proper noun | 山海经
 o | onomatopoeia | 呜呜
 p | preposition | 以，为
-q | quantity | 岁
+q | quantity | 年，岁
 r | pronoun | 其，斯
 u | auxiliary | 之，所
 v | verb | 赐
