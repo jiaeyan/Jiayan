@@ -129,12 +129,12 @@ if __name__ == '__main__':
     # train_punctuator('data/jiayan.klm', '/Users/jiaeyan/Desktop/chn_data/all.txt', 'cut_model', 'punc_model')
     # train_postagger('/Users/jiaeyan/Desktop/chn_data/pos_all.txt', 'pos_model')
 
-    lm = load_lm('data/jiayan.klm')
-
-    sentcizer = CRFSentencizer(lm)
-    sentcizer.load("/Users/jiaeyan/Desktop/cut_model_70")
-    for test in tests:
-        print(sentcizer.sentencize(test))
+    # lm = load_lm('data/jiayan.klm')
+    #
+    # sentcizer = CRFSentencizer(lm)
+    # sentcizer.load("/Users/jiaeyan/Desktop/cut_model_70")
+    # for test in tests:
+    #     print(sentcizer.sentencize(test))
 
 
     # punctuator = CRFPunctuator(lm, '/Users/jiaeyan/Desktop/cut_model')
@@ -146,8 +146,11 @@ if __name__ == '__main__':
     # for test in tests:
     #     print(list(tokenizer.tokenize(test)))
 
-    # postagger = CRFPOSTagger()
-    # postagger.load('pos_model')
+    postagger = CRFPOSTagger()
+    postagger.load('/Users/jiaeyan/Desktop/pos_model_50')
+    # words = ['是', '故', '内圣外王', '之', '道', '，', '暗', '而', '不', '明', '，', '郁', '而', '不', '发', '，', '天下', '之', '人', '各', '为', '其', '所', '欲', '焉', '以', '自', '为', '方', '。']
+    words = ['天下', '大乱', '，', '贤圣', '不', '明', '，', '道德', '不', '一', '，', '天下', '多', '得', '一', '察', '焉', '以', '自', '好', '。']
+    print(postagger.postag(words))
     # for test in tests:
     #     words = list(tokenizer.tokenize(test))
     #     print(words)
