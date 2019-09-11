@@ -1,5 +1,5 @@
 # 甲言Jiayan
-[![PyPI](https://img.shields.io/badge/pypi-v0.0.1-blue.svg)](https://pypi.org/project/jiayan/)
+[![PyPI](https://img.shields.io/badge/pypi-v0.0.2-blue.svg)](https://pypi.org/project/jiayan/)
 
 [中文](#简介)  
 [English](#introduction)  
@@ -31,7 +31,7 @@
 
 ## 使用  
 以下各模块的使用方法均来自[examples.py](jiayan/examples.py)。
-1. 下载模型并解压：[百度网盘](https://pan.baidu.com/s/1N815EO8aEBl-S8Rd-rwXwA)，提取码：`12gu`
+1. 下载模型并解压：[百度网盘](链接:https://pan.baidu.com/s/1PXP0eSQWWcNmAb6lkuB5sw)，提取码：`p0sc`
    * jiayan.klm：语言模型，主要用来分词，以及句读标点任务中的特征提取；  
    * pos_model：CRF词性标注模型；
    * cut_model：CRF句读模型；
@@ -175,7 +175,7 @@ Current version supports lexicon construction, tokenizing, POS tagging, sentence
 
 ## Usages  
 The usage codes below are all from [examples.py](jiayan/examples.py).  
-1. Download the models and unzip them：[Google Drive](https://drive.google.com/open?id=1RlMnCkMMyvDoCjHDCG8vA0jH3To_zQxU)
+1. Download the models and unzip them：[Google Drive](https://drive.google.com/open?id=1piZQBO8OXQ5Cpi17vAcZsrbJLPABnKzp)
    * jiayan.klm：the language model used for tokenizing and feature extraction for sentence segmentation and punctuation;    
    * pos_model：the CRF model for POS tagging;
    * cut_model：the CRF model for sentence segmentation;

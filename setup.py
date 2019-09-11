@@ -21,7 +21,7 @@ extras_require = {
 
 setup(
     name="jiayan",
-    version="0.0.1",
+    version="0.0.2",
     author="Jiajie Yan",
     author_email="jiaeyan@gmail.com",
     description="The NLP toolkit designed for classical chinese.",
