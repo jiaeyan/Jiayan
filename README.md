@@ -31,7 +31,7 @@
 
 ## 使用  
 以下各模块的使用方法均来自[examples.py](jiayan/examples.py)。
-1. 下载模型并解压：[百度网盘](链接:https://pan.baidu.com/s/1PXP0eSQWWcNmAb6lkuB5sw)，提取码：`p0sc`
+1. 下载模型并解压：[百度网盘](https://pan.baidu.com/s/1PXP0eSQWWcNmAb6lkuB5sw)，提取码：`p0sc`
    * jiayan.klm：语言模型，主要用来分词，以及句读标点任务中的特征提取；  
    * pos_model：CRF词性标注模型；
    * cut_model：CRF句读模型；
