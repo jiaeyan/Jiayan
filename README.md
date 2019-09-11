@@ -7,7 +7,7 @@
 ## 简介
 甲言，取「甲骨文言」之意，是一款专注于古汉语处理的NLP工具包。  
 目前通用的汉语NLP工具均以现代汉语为核心语料，对古代汉语的处理效果很差(详见[分词](#2))。本项目的初衷，便是辅助古汉语信息处理，帮助有志于挖掘古文化矿藏的古汉语学者、爱好者等更好地分析和利用文言资料，从「文化遗产」中创造出「文化新产」。  
-当前版本支持词库构建、自动分词、词性标注、文言句读和标点五项功能，更多功能正在开发中。  
+当前版本支持[词库构建](#1)、[自动分词](#2)、[词性标注](#3)、[文言句读](#4)和[标点](#5)五项功能，更多功能正在开发中。  
   
 ## 功能  
 * [__词库构建__](#1)  
@@ -145,6 +145,8 @@
 
 
 ## 版本
+* v0.0.2
+  * 增加词性标注功能。
 * v0.0.1
   * 词库构建、自动分词、文言句读、标点功能开放。
   
@@ -154,7 +156,7 @@
 ## Introduction
 Jiayan, which means Chinese characters engraved on oracle bones, is a professional Python NLP tool for Classical Chinese.  
 Prevailing Chinese NLP tools are mainly trained on modern Chinese data, which leads to bad performance on Classical Chinese (See [__Tokenizing__](#6)). The purpose of this project is to assist Classical Chinese information processing.  
-Current version supports lexicon construction, tokenizing, POS tagging, sentence segmentation and automatic punctuation, more features are in development.  
+Current version supports [lexicon construction](#6), [tokenizing](#7), [POS tagging](#8), [sentence segmentation](#9) and [automatic punctuation](#10), more features are in development.  
   
 ## Features  
 * [__Lexicon Construction__](#6)  
@@ -289,5 +291,7 @@ The usage codes below are all from [examples.py](jiayan/examples.py).
 
 
 ## Versions
+* v0.0.2
+  * POS tagging feature is open.
 * v0.0.1
   * Add features of lexicon construction, tokenizing, sentence segmentation and automatic punctuation.
