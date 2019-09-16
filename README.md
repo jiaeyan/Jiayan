@@ -1,5 +1,5 @@
 # 甲言Jiayan
-[![PyPI](https://img.shields.io/badge/pypi-v0.0.2-blue.svg)](https://pypi.org/project/jiayan/)
+[![PyPI](https://img.shields.io/badge/pypi-v0.0.3-blue.svg)](https://pypi.org/project/jiayan/)
 
 [中文](#简介)  
 [English](#introduction)  
@@ -145,6 +145,8 @@
 
 
 ## 版本
+* v0.0.3
+  * 修复 `pip install jiayan` 时产生的kenlm安装编译失败的问题。  
 * v0.0.2
   * 增加词性标注功能。
 * v0.0.1
@@ -291,6 +293,8 @@ The usage codes below are all from [examples.py](jiayan/examples.py).
 
 
 ## Versions
+* v0.0.3
+  * Fixed the issue of failing on `pip install jiayan` due to the compiling error of kenlm.  
 * v0.0.2
   * POS tagging feature is open.
 * v0.0.1
