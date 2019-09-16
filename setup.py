@@ -5,7 +5,7 @@ import sys
 from setuptools import setup, find_packages
 
 
-requirements = ["kenlm", "python-crfsuite"]
+requirements = ["https://github.com/kpu/kenlm/archive/master.zip", "scikit-learn", "python-crfsuite"]
 if sys.version_info[:2] < (2, 7):
     requirements.append('argparse')
 if sys.version_info[:2] < (3, 4):

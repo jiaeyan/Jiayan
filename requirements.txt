@@ -1,2 +1,3 @@
-kenlm
+https://github.com/kpu/kenlm/archive/master.zip
+scikit-learn
 python-crfsuite
