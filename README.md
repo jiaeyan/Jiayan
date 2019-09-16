@@ -1,5 +1,5 @@
 # 甲言Jiayan
-[![PyPI](https://img.shields.io/badge/pypi-v0.0.3-blue.svg)](https://pypi.org/project/jiayan/)
+[![PyPI](https://img.shields.io/badge/pypi-v0.0.21-blue.svg)](https://pypi.org/project/jiayan/)
 
 [中文](#简介)  
 [English](#introduction)  
