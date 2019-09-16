@@ -5,7 +5,8 @@ import sys
 from setuptools import setup, find_packages
 
 
-requirements = ["https://github.com/kpu/kenlm/archive/master.zip", "scikit-learn", "python-crfsuite"]
+requirements = ["scikit-learn", "python-crfsuite"]
+
 if sys.version_info[:2] < (2, 7):
     requirements.append('argparse')
 if sys.version_info[:2] < (3, 4):
@@ -21,13 +22,13 @@ extras_require = {
 
 setup(
     name="jiayan",
-    version="0.0.3",
+    version="0.0.21",
     author="Jiajie Yan",
     author_email="jiaeyan@gmail.com",
     description="The NLP toolkit designed for classical chinese.",
     long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type='text/markdown',
-    # license="MIT",
+    license="MIT",
     url="https://github.com/jiaeyan/Jiayan",
     keywords=['classical-chinese', 'ancient-chinese', 'nlp'],
     packages=find_packages(),
@@ -35,9 +36,6 @@ setup(
     extras_require=extras_require,
     python_requires='>=2.6, >=3',
     include_package_data=True,
-    # entry_points={
-    #     'console_scripts': ['chrhyme = chrhyme.__main__:main']
-    # },
     classifiers=[
         'Programming Language :: Python',
         'Programming Language :: Python :: 2',

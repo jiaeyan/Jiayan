@@ -28,6 +28,7 @@
 
 ## 安装  
     $ pip install jiayan 
+    $ pip install https://github.com/kpu/kenlm/archive/master.zip
 
 ## 使用  
 以下各模块的使用方法均来自[examples.py](jiayan/examples.py)。
@@ -145,8 +146,8 @@
 
 
 ## 版本
-* v0.0.3
-  * 修复 `pip install jiayan` 时产生的kenlm安装编译失败的问题。  
+* v0.0.21
+  * 将安装过程分为两步，确保得到最新的kenlm版本。  
 * v0.0.2
   * 增加词性标注功能。
 * v0.0.1
@@ -176,6 +177,7 @@ Current version supports [lexicon construction](#6), [tokenizing](#7), [POS tagg
 
 ## Installation  
     $ pip install jiayan 
+    $ pip install https://github.com/kpu/kenlm/archive/master.zip
 
 ## Usages  
 The usage codes below are all from [examples.py](jiayan/examples.py).  
@@ -293,8 +295,8 @@ The usage codes below are all from [examples.py](jiayan/examples.py).
 
 
 ## Versions
-* v0.0.3
-  * Fixed the issue of failing on `pip install jiayan` due to the compiling error of kenlm.  
+* v0.0.21
+  * Divide the installation into two steps to ensure to get the latest version of kenlm.    
 * v0.0.2
   * POS tagging feature is open.
 * v0.0.1
